@@ -5,6 +5,10 @@ import {Link, Route, Routes } from 'react-router-dom';
 import { Box, Button, Container, Stack, Switch, Typography } from '@mui/material';
 import { About } from './Screens/About';
 import { Users } from './Screens/Users';
+import { HomePage } from './Screens/homePage';
+import { ProductsPage } from './Screens/productsPage';
+import { UserPage } from './Screens/userPage';
+import { OrdersPage } from './Screens/ordersPage';
 
 function App() {
   return (
@@ -12,28 +16,28 @@ function App() {
       <nav>
       <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">HomePage</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/products">ProductsPage</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/orders">OrdersPage</Link>
+            </li>
+            <li>
+              <Link to="/member-page">UserPage</Link>
             </li>
           </ul>
       </nav>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/users" element={<Users />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/member-page" element={<UserPage />} />
       </Routes>
     </div>
   );
-}
-
-function Home() {
-  return <Container>Home</Container>;
 }
 
 
