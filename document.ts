@@ -1,0 +1,8 @@
+/*
+DARSIMIZ REJASI
+Header va footerlarning ahamiyati
+Figma loyihasiga garab publishing buyicha
+rejalarni amalga oshiramiz
+Header va navbarni publishingnini amalga
+oshiramiz
+*/
