@@ -2,7 +2,7 @@ import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export function HomeNavbar(){
-    const authMember = null
+    const authMember = true
 
     return <div className="home-navbar">
         <Container sx={{mt:"55px", height: "642px"}}>
@@ -35,7 +35,7 @@ export function HomeNavbar(){
                     : null}
                 </Box>
                 {/* Basket */}
-                {!authMember? (<Box><Button>Login</Button></Box>) : <img/>}
+                {!authMember? (<Box><Button variant="contained" sx={{background: '#3776CC', color: "#f8f8ff"}}>Login</Button></Box>) : <img/>}
             </Stack>
             <Stack>DETAILS</Stack>
         </Container>
