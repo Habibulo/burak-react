@@ -35,7 +35,7 @@ export function HomeNavbar(){
                     : null}
                 </Box>
                 {/* Basket */}
-                {!authMember? (<Box><Button variant="contained" sx={{background: "#3776CC", color: 'f8f8ff'}} >Login</Button></Box>) : <img/>}
+                {!authMember? (<Box><Button>Login</Button></Box>) : <img/>}
             </Stack>
             <Stack>DETAILS</Stack>
         </Container>
