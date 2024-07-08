@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/app.css';
-import {Link, Route, Switch } from 'react-router-dom';
+import {Link, Route, Switch, useLocation } from 'react-router-dom';
 // import { RippleBadge } from './MaterialTheme/styled';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import { About } from './Screens/About';
@@ -9,26 +9,19 @@ import { HomePage } from './Screens/homePage';
 import { ProductsPage } from './Screens/productsPage';
 import { UserPage } from './Screens/userPage';
 import { OrdersPage } from './Screens/ordersPage';
+import { log } from 'console';
+import path from 'path';
+import { HomeNavbar } from './components/headers/HomeNavbar';
+import { OtherNavbar } from './components/headers/OtherNavbar';
+import { Footer } from './components/footer/footer';
 
 function App() {
+  const location  = useLocation()
+  console.log("console:" , location);
+  
   return (
-    <div>
-      <nav>
-      <ul>
-            <li>
-              <Link to="/">HomePage</Link>
-            </li>
-            <li>
-              <Link to="/products">ProductsPage</Link>
-            </li>
-            <li>
-              <Link to="/orders">OrdersPage</Link>
-            </li>
-            <li>
-              <Link to="/member-page">UserPage</Link>
-            </li>
-          </ul>
-      </nav>
+    <>
+      {location.pathname === '/' ? <HomeNavbar/> : <OtherNavbar/> }
       {/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
       <Switch>
@@ -45,7 +38,8 @@ function App() {
           <HomePage />
         </Route>
       </Switch>
-      </div>
+      <Footer/>
+      </>
   );
 }
 
