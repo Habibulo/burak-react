@@ -5,16 +5,17 @@ import Advertisement from "./Advertisement";
 import Events from "./Events";
 import PopularDishes from "./PopularDishes";
 import ActiveUsers from "./ActiveUsers";
-import "../../css/home.css"
+import "../../css/home.css";
 
 export function HomePage() {
   return (
     <div className="homepage">
-      <Statistics/>
-      <PopularDishes/>
-      <NewDishes/>
-      <Advertisement/>
-      <ActiveUsers/>
-      <Events/>
-    </div>)
+      <Statistics />
+      <PopularDishes />
+      <NewDishes />
+      <Advertisement />
+      <ActiveUsers />
+      <Events />
+    </div>
+  );
 }

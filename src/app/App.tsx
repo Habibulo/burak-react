@@ -19,7 +19,7 @@ import Footer from './components/footer/footer';
 import './css/footer.css'
 function App() {
   const location  = useLocation()
-  console.log("console:" , location);
+  // console.log("console:" , location);
   return (
     <>
       {location.pathname === '/' ? <HomeNavbar/> : <OtherNavbar/> }
