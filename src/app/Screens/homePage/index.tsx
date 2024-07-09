@@ -5,7 +5,8 @@ import Advertisement from "./Advertisement";
 import Events from "./Events";
 import PopularDishes from "./PopularDishes";
 import ActiveUsers from "./ActiveUsers";
-export{}
+import "../../css/home.css"
+
 export function HomePage() {
   return (
     <div className="homepage">
