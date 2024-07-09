@@ -1,5 +1,19 @@
-import { Container } from "@mui/material";
+import React from "react";
+import Statistics from "./Statistics";
+import NewDishes from "./NewDishes";
+import Advertisement from "./Advertisement";
+import Events from "./Events";
+import PopularDishes from "./PopularDishes";
+import ActiveUsers from "./ActiveUsers";
 export{}
 export function HomePage() {
-  return <Container>HomePage</Container>;
+  return (
+    <div className="homepage">
+      <Statistics/>
+      <PopularDishes/>
+      <NewDishes/>
+      <Advertisement/>
+      <ActiveUsers/>
+      <Events/>
+    </div>)
 }
