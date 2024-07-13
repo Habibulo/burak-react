@@ -12,7 +12,7 @@ const Footers = styled.div`
 `;
 
 export default function Footer() {
-  const authMember = true;
+  const authMember = null;
 
   return (
     <Footers>

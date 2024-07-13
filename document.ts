@@ -24,3 +24,13 @@
       - ActiveUsers Sectional Componentini hosil gilamiz
       - HomePage Events Sectional Componentini hosil qilamiz
 */
+/*
+    64_65_
+    DARSIMIZ REJASI
+      - ProductsPage Screen Componentida nested routing tizimini hosil etamiz
+      - ProductsPage Screen Componentiga daxidor Sectional Componentlarni qurib olamiz
+      - Products list Sectional Componentini publishing qilamiz
+    63_
+    DARSIMIZ REJASI
+      - 
+*/
