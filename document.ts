@@ -32,5 +32,5 @@
       - Products list Sectional Componentini publishing qilamiz
     63_
     DARSIMIZ REJASI
-      - 
+      - Chosen Product Sectional Component publishing ini amalga oshiramiz
 */

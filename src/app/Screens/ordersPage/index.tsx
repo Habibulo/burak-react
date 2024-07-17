@@ -7,7 +7,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PausedOrders from "./PausedOrders";
 import ProcessOrders from "./ProcessOrders";
 import FinishedOrders from "./FinishedOrders";
-import "../../../css/orders.css";
+import "../../css/orders.css";
 
 export default function OrdersPage() {
   const [value, setValue] = useState("1");

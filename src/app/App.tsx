@@ -6,8 +6,6 @@ import { About } from './Screens/About';
 import { Users } from './Screens/Users';
 import { HomePage } from './Screens/homePage';
 import { ProductsPage } from './Screens/productsPage';
-import { UserPage } from './Screens/userPage';
-import { OrdersPage } from './Screens/ordersPage';
 import { log } from 'console';
 import path from 'path';
 import { HomeNavbar } from './components/headers/HomeNavbar';
@@ -15,9 +13,11 @@ import { OtherNavbar } from './components/headers/OtherNavbar';
 import './css/app.css';
 import './css/navbar.css'
 import './css/product.css'
-import { HelpPage } from './Screens/helpPage';
 import Footer from './components/footer/footer';
 import './css/footer.css'
+import OrdersPage from './Screens/ordersPage';
+import UserPage from './Screens/userPage';
+import HelpPage from './Screens/helpPage';
 function App() {
   const location  = useLocation()
   // console.log("console:" , location);

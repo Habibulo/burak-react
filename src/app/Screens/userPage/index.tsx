@@ -3,7 +3,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import "../../../css/userPage.css";
+import "../../css/userPage.css";
 import { Settings } from "./Settings";
 
 export default function UserPage() {
@@ -36,7 +36,7 @@ export default function UserPage() {
                     <img src={"/icons/user-badge.svg"} />
                   </div>
                 </div>
-                <span className={"order-user-name"}>James</span>
+                <span className={"order-user-name"}>Daniel</span>
                 <span className={"order-user-prof"}>User</span>
                 <span className={"order-user-prof"}>No address</span>
               </Box>
