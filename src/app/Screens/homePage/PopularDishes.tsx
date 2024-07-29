@@ -14,7 +14,7 @@ const list = [
   { productName: "Lavash", imagePath: "/img/lavash.webp" },
   { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
   { productName: "Jaz Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Lo'li Kebab", imagePath: "/img/kebab-fresh.webp" },
+  { productName: "Lo'li Kebab", imagePath: "/img/fresh-kebab.webp" },
 ];
 export default function PopularDishes() {
   return (
