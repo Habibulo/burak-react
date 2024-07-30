@@ -4,7 +4,7 @@ import { HomePage } from ".";
 import { Home } from "@mui/icons-material";
 const selectHomePage = (state: AppRootState) => state.homePage
 
-const retrievePopularDishes = createSelector(
+export const retrievePopularDishes = createSelector(
     selectHomePage, 
     (HomePage)=> HomePage.popularDishes)
 const retrieveNewDishes = createSelector(
