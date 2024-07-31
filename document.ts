@@ -102,6 +102,7 @@
         - HomePagega daxldor Redux Architecture ni birga test qilamiz
 =========================================================================
         81 => 
-        - 
-        - 
+        - Frontendimizga daxldor environmental variablelarni va configuration faylini hosil etamiz
+        - Backenddan ma'lumotlar olish maqsadida API Servicelarini joriy etamiz
+        - API Servicelar orgali olingan ma'lumotlar asosida HomePage Screen Componentimizni developing jarayonini yakunlaymiz
 */

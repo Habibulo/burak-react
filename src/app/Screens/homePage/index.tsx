@@ -12,7 +12,10 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
 import { setPopularDishes } from "./slice";
 import { retrievePopularDishes } from "./selector";
-import { Product } from "../../lib/data/types/product";
+import { Product } from "../../lib/types/product"; 
+import { log } from "console";
+import ProductService from "../../services/ProductService";
+import { ProductCollection } from "../../lib/enums/product.enum";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data))
@@ -28,63 +31,25 @@ export function HomePage() {
   const {popularDishes} = useSelector(popularDishesRetriever)
   // selector: Data Fetch from Redux Store => [Extract Data]
   useEffect(() => {
-    const result = [
-      {
-        _id: {
-          $oid: "66a7fccf96b7507a28b3305c",
-        },
-        productStatus: "PAUSE",
-        productCollection: "DISH",
-        productName: "Osh",
-        productPrice: 21,
-        productLeftCount: 23,
-        productSize: "NORMAL",
-        productVolume: 1,
-        productDesc: "afsdfsaf",
-        productImages: [
-          "uploads/products/f286dce8-9351-4cbe-962c-e031e10ef489.jpg",
-        ],
-        productViews: 0,
-        createdAt: {
-          $date: "2024-07-29T20:34:23.043Z",
-        },
-        updatedAt: {
-          $date: "2024-07-29T20:34:23.043Z",
-        },
-        __v: 0,
-      },
-      {
-        _id: {
-          $oid: "66a7fd1996b7507a28b33060",
-        },
-        productStatus: "PAUSE",
-        productCollection: "DISH",
-        productName: "Shashlik",
-        productPrice: 2,
-        productLeftCount: 32,
-        productSize: "NORMAL",
-        productVolume: 1,
-        productDesc: "adsfsd",
-        productImages: [
-          "uploads/products/a8c6467c-9cfd-4114-a125-d3023a13acbd.jpg",
-        ],
-        productViews: 0,
-        createdAt: {
-          $date: "2024-07-29T20:35:37.617Z",
-        },
-        updatedAt: {
-          $date: "2024-07-29T20:35:37.617Z",
-        },
-        __v: 0,
-      },
-    ];
     // Backend server data request => [Backend Data Fetch]
+    const product = new ProductService()
+    product
+    .getProducts(
+      {page: 1,
+      limit: 4, 
+      order: "productViews",
+      productCollection: ProductCollection.DISH
+    })
+    .then(
+      data => {
+        console.log("test uchun data", data);
+        setPopularDishes(data)
+      }
+    ).catch()
     // slice: Data Inserting to Redux Store => [Data Store]
-
-    // @ts-ignore
-    setPopularDishes(result)
   }, []);
-
+  console.log(process.env.REACT_APP_URL);
+  
   return (
     <div className="homepage">
       <Statistics />

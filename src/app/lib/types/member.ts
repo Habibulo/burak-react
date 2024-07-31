@@ -1,4 +1,4 @@
-import { memberStatus, memberType } from "../../enums/member.enum";
+import { memberStatus, memberType } from "../enums/member.enum";
 
 export interface Member {
     _id: string;
