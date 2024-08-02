@@ -4,7 +4,7 @@ import {Link, Route, Switch, useLocation } from 'react-router-dom';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import { About } from './Screens/About';
 import { Users } from './Screens/Users';
-import { HomePage } from './Screens/homePage';
+import { HomePage } from "./Screens/homePage/" 
 import { ProductsPage } from './Screens/productsPage';
 import { log } from 'console';
 import path from 'path';

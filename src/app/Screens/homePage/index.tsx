@@ -6,42 +6,63 @@ import Events from "./Events";
 import PopularDishes from "./PopularDishes";
 import ActiveUsers from "./ActiveUsers";
 import "../../css/home.css";
-
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setPopularDishes } from "./slice";
-import { retrievePopularDishes } from "./selector";
-import { Product } from "../../lib/types/product"; 
+import { setNewDishes, setPopularDishes, setTopUsers } from "./slice";
+import { Product } from "../../lib/types/product";
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../lib/enums/product.enum";
+import MemberService from "../../services/MemberService";
+import { Member } from "../../lib/types/member";
 
 const actionDispatch = (dispatch: Dispatch) => ({
-  setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data))
-})
+  setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
+  setNewDishes: (data: Product[]) => dispatch(setNewDishes(data)),
+  setTopUsers: (data: Member[]) => dispatch(setTopUsers(data)),
+});
 
 export function HomePage() {
-  const { setPopularDishes } = actionDispatch(useDispatch())
-  // selector: Data Fetch from Redux Store => [Extract Data]
+  const { setPopularDishes, setNewDishes, setTopUsers } = actionDispatch(
+    useDispatch()
+  );
+
   useEffect(() => {
-    // Backend server data request => [Backend Data Fetch]
-    const product = new ProductService()
+    const product = new ProductService();
     product
-    .getProducts(
-      {page: 1,
-      limit: 4, 
-      order: "productPrice",
-      // productCollection: ProductCollection.DISH
-    })
-    .then(
-      data => {
-        console.log("test uchun data", data);
-        setPopularDishes(data)
-      }
-    ).catch()
-    // slice: Data Inserting to Redux Store => [Data Store]
+      .getProducts({
+        page: 1,
+        limit: 4,
+        order: "productViews",
+        productCollection: ProductCollection.DISH,
+      })
+      .then((data) => {
+        console.log("data:", data);
+        setPopularDishes(data);
+      })
+      .catch((err) => console.log(err));
+
+    product
+      .getProducts({
+        page: 1,
+        limit: 4,
+        order: "createdAt",
+        productCollection: ProductCollection.DISH,
+      })
+      .then((data) => {
+        console.log("data:", data);
+        setNewDishes(data);
+      })
+      .catch((err) => console.log(err));
+
+    const member = new MemberService();
+    member
+      .getTopUsers()
+      .then((data) => {
+        setTopUsers(data);
+      })
+      .catch((err) => console.log(err));
   }, []);
-  console.log(process.env.REACT_APP_URL);
-  
+
   return (
     <div className="homepage">
       <Statistics />
