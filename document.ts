@@ -106,3 +106,14 @@
         - Backenddan ma'lumotlar olish maqsadida API Servicelarini joriy etamiz
         - API Servicelar orgali olingan ma'lumotlar asosida HomePage Screen Componentimizni developing jarayonini yakunlaymiz
 */
+
+/*
+    82_83_Dars 
+    Darsimiz Rejasi: 
+        82 => 
+        - ProductsPage Screen Componentini type integrationini amalga oshiramiz
+        - ProductsPage Screen Componentini Slice va Selectorlarini develop qilamiz
+=========================================================================
+        83 => 
+        - 
+*/
