@@ -115,5 +115,7 @@
         - ProductsPage Screen Componentini Slice va Selectorlarini develop qilamiz
 =========================================================================
         83 => 
-        - 
+        - Products Componentida Service APIlar orgali olinadigan ma lumotlar asosida develop qilamiz.
+        - Products Componentida user interaction uchun xizmat qiladigan Handlerlarni joriy etamiz.
+        - Products Componentida productsSearch objectini tashkil qlamiz va u orgali backenddan data fetch qilish mexanizmini quramiz
 */
