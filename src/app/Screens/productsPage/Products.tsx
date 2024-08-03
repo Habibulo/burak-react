@@ -8,20 +8,24 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Dispatch } from "@reduxjs/toolkit";
+import { setChosenProduct, setProducts, setRestaurant } from "./slice";
+import { Product } from "../../lib/types/product";
+import { retrieveProducts } from "./selector";
+import { createSelector } from "reselect"
+import { useSelector } from "react-redux";
+import { serverApi } from "../../lib/config";
 
-const products = [
-  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Kebab Donar", imagePath: "/img/fresh-kebab.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Kebab", imagePath: "/img/fresh-kebab.webp" },
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-];
+const actionDispatch = (dispatch: Dispatch) => ({
+  setProducts: (data: Product[]) => dispatch(setProducts(data)),
+});
+const productsRetriever = createSelector(
+  retrieveProducts,
+  (products) => ({products})
+  )
 
 export default function Products() {
+  const { products } = useSelector(productsRetriever);
   return (
     <div className={"products"}>
       <Container>
@@ -98,11 +102,12 @@ export default function Products() {
             <Stack className={"product-wrapper"}>
               {products.length !== 0 ? (
                 products.map((product, index) => {
+                  const imagePath = `${serverApi}/${product.productImages[0]}`;
                   return (
-                    <Stack key={index} className={"product-card"}>
+                    <Stack key={product._id} className={"product-card"}>
                       <Stack
                         className={"product-img"}
-                        sx={{ backgroundImage: `url(${product.imagePath})` }}
+                        sx={{ backgroundImage: `url(${product.productImages[0]})` }}
                       >
                         <div className={"product-sale"}>Normal size</div>
                         <Button className={"shop-btn"}>
@@ -195,3 +200,4 @@ export default function Products() {
     </div>
   );
 }
+
