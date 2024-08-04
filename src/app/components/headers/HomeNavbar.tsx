@@ -4,17 +4,19 @@ import Basket from "./Basket";
 import React, { useEffect, useState } from "react";
 import { CartItem } from "../../lib/types/search";
 
-
 interface HomeNavbarProps {
-  cartItems: CartItem[]
+  cartItems: CartItem[];
+  onAdd: (item: CartItem) => void;
+  onRemove: (item: CartItem) => void;
+  onDelete: (item: CartItem) => void;
+  onDeleteAll: () => void;
 }
 
-
 export function HomeNavbar(props: HomeNavbarProps) {
-  const {cartItems} = props
+  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props;
   const authMember = null;
   const [count, setCount] = useState<number>(0);
-  const [value, setValue] = useState<boolean>(true); 
+  const [value, setValue] = useState<boolean>(true);
 
   useEffect(() => {
     console.log("componentDidMount");
@@ -29,7 +31,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
 
   const buttonHandler = () => {
     setValue(!value);
-  }
+  };
 
   return (
     <div className="home-navbar">
@@ -79,7 +81,12 @@ export function HomeNavbar(props: HomeNavbarProps) {
               ) : null}
             </Box>
             {/* Basket */}
-            <Basket cartItems={cartItems} />
+            <Basket 
+                cartItems={cartItems}
+                onAdd ={onAdd}
+                onRemove ={onRemove}
+                onDelete ={onDelete}
+                onDeleteAll ={onDeleteAll} />
             {!authMember ? (
               <Box>
                 <Button variant="contained" className="login-button">
