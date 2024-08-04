@@ -1,8 +1,14 @@
 import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
+import { CartItem } from "../../lib/types/search";
 
-export function OtherNavbar(){
+interface OtherNavbarProps {
+    cartItems: CartItem[]
+}
+
+export function OtherNavbar(props: OtherNavbarProps){
+    const {cartItems} = props
     const authMember =  null;
     return (
         <div className="other-navbar">
@@ -16,7 +22,6 @@ export function OtherNavbar(){
                 <Stack  className="links">
                 <Box className={"hover-line"}> <NavLink to={'/'}>Home</NavLink></Box>
                 <Box className={"hover-line"}> <NavLink to={'/products'} activeClassName="underline">Produts</NavLink></Box>
-                <Box className={"hover-line"}> <NavLink to={'/help'} activeClassName="underline">Help</NavLink></Box>
                 <Box>
                     {authMember ? (<Box className={"hover-line"}><NavLink to={'/orders'} activeClassName="underline">Orders</NavLink></Box>)
                     : null }
@@ -26,7 +31,8 @@ export function OtherNavbar(){
                     : null}
                 </Box>
                     {/* Basket */}
-                <Basket/>
+                <Box className={"hover-line"}> <NavLink to={'/help'} activeClassName="underline">Help</NavLink></Box>
+                <Basket cartItems={cartItems}/>
                 {!authMember ? 
                     (<Box>
                         <Button variant="contained" className="login-button">Login
