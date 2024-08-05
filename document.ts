@@ -119,3 +119,19 @@
         - Products Componentida user interaction uchun xizmat qiladigan Handlerlarni joriy etamiz.
         - Products Componentida productsSearch objectini tashkil qlamiz va u orgali backenddan data fetch qilish mexanizmini quramiz
 */
+/*
+    84_85_86_Dars 
+    Darsimiz Rejasi: 
+        84 => 
+        - Basketimizga yangi productlar qo'shish mantiqini develop qilamiz
+        - Basketimizning mantiqini hooklar orqali amalga oshiramiz
+        - Basketimiz bilan bog'liq boshqa mantiqlarimizni develop qilamiz
+=========================================================================
+        85 => 
+        - Authentication modal Componentini publishingni amalga oshiramiz
+        - Authentication jarayonini siz bilan birga develop qilamiz
+
+=========================================================================
+        86 => 
+        - 
+*/
