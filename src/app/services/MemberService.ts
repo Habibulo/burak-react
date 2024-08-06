@@ -41,7 +41,7 @@ class MemberService {
     try{
       const url = this.path + "/member/signup";
       const result = await axios.post(url, input, {withCredentials: true})
-      console.log("singup", result);
+      console.log("signup", result);
       const member = result.data.member
       localStorage.setItem("memberData", JSON.stringify(member))
       return member
@@ -51,7 +51,20 @@ class MemberService {
       throw err   
     }
   }
-  
+  public async login(input: LoginInput): Promise<Member> {
+    try{
+      const url = this.path + "/member/login";
+      const result = await axios.post(url, input, {withCredentials: true})
+      console.log("login", result);
+      const member = result.data.member
+      localStorage.setItem("memberData", JSON.stringify(member))
+      return member
+    }
+    catch(err) {
+      console.log(err);   
+      throw err   
+    }
+  }
 
 }
 
