@@ -37,6 +37,22 @@ class MemberService {
       throw err;
     }
   }
+  public async signup(input: MemberInput): Promise<Member> {
+    try{
+      const url = this.path + "/member/signup";
+      const result = await axios.post(url, input, {withCredentials: true})
+      console.log("singup", result);
+      const member = result.data.member
+      localStorage.setItem("memberData", JSON.stringify(member))
+      return member
+    }
+    catch(err) {
+      console.log(err);   
+      throw err   
+    }
+  }
+  
+
 }
 
 export default MemberService;

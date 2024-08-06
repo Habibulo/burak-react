@@ -9,10 +9,20 @@ interface OtherNavbarProps {
   onRemove: (item: CartItem) => void;
   onDelete: (item: CartItem) => void;
   onDeleteAll: () => void;
+  setSignupOpen: (isOpen: boolean) => void
+  setLoginOpen: (isOpen: boolean) => void
 }
 
 export function OtherNavbar(props: OtherNavbarProps) {
-  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props;
+  const { 
+    cartItems, 
+    onAdd, 
+    onRemove, 
+    onDelete, 
+    onDeleteAll, 
+    setLoginOpen, 
+    setSignupOpen
+  } = props;
   const authMember = null;
   return (
     <div className="other-navbar">
@@ -32,6 +42,12 @@ export function OtherNavbar(props: OtherNavbarProps) {
               {" "}
               <NavLink to={"/products"} activeClassName="underline">
                 Produts
+              </NavLink>
+            </Box>
+            <Box className={"hover-line"}>
+              {" "}
+              <NavLink to={"/help"} activeClassName="underline">
+                Help
               </NavLink>
             </Box>
             <Box>
@@ -54,12 +70,6 @@ export function OtherNavbar(props: OtherNavbarProps) {
               ) : null}
             </Box>
             {/* Basket */}
-            <Box className={"hover-line"}>
-              {" "}
-              <NavLink to={"/help"} activeClassName="underline">
-                Help
-              </NavLink>
-            </Box>
             <Basket 
                 cartItems={cartItems}
                 onAdd ={onAdd}
@@ -68,7 +78,7 @@ export function OtherNavbar(props: OtherNavbarProps) {
                 onDeleteAll ={onDeleteAll} />
             {!authMember ? (
               <Box>
-                <Button variant="contained" className="login-button">
+                <Button variant="contained" className="login-button" onClick={() => setLoginOpen(true)}>
                   Login
                 </Button>
               </Box>
