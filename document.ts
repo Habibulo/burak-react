@@ -133,5 +133,8 @@
 
 =========================================================================
         86 => 
-        - 
+        - Global variablelarni hosil qilish uchun customized hooklardan foydalanamiz
+        - Hosil gilgan customized hooklarimizda context integratsiyasini amalga oshiramiz
+        - Userlarimiz authenticated bo'lganda hooklarimizni ishlatishni o'rganamiz
+        - Logout jarayonini develop qilamiz
 */
