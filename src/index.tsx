@@ -20,7 +20,7 @@ root.render(
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Router>
-            <App />
+            <App/>
           </Router>
         </ThemeProvider>
       </ContextProvider>

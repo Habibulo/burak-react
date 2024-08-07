@@ -138,3 +138,17 @@
         - Userlarimiz authenticated bo'lganda hooklarimizni ishlatishni o'rganamiz
         - Logout jarayonini develop qilamiz
 */
+
+/*
+    87_88_89_Dars 
+    Darsimiz Rejasi: 
+        87 => 
+        - OrdersPage Screen Componentiga daxldor type integrationnini hosil qilamiz
+        - OrdersPage Screen Componentini Redux Architecture develop qilamiz
+=========================================================================
+        88 => 
+        - 
+=========================================================================
+        89 => 
+        - 
+*/
