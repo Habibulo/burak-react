@@ -16,9 +16,6 @@ export interface OrderItem {
   productId: string;
   createdAt: Date;
   updatedAt: Date;
-  /** from aggregations **/
-  orderItems: OrderItem[];
-  productData: Product[];
 }
 
 export interface Order {
@@ -29,6 +26,9 @@ export interface Order {
   memberId: string;
   createdAt: Date;
   updatedAt: Date;
+  /** from aggregations **/
+  orderItems: OrderItem[];
+  productData: Product[];
 }
 
 export interface OrderInquiry {

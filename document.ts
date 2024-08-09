@@ -147,7 +147,9 @@
         - OrdersPage Screen Componentini Redux Architecture develop qilamiz
 =========================================================================
         88 => 
-        - 
+        - Basketimiz orqali yangi orderlarni hosil etamiz
+        - Userlarimizga daxidor bo'lgan jami orderlarni backenddan chaqiramiz
+        - Orderlarimizni update qilish mantiqini develop qilamiz
 =========================================================================
         89 => 
         - 

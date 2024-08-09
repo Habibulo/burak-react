@@ -1,5 +1,5 @@
-import { SyntheticEvent, useState } from "react";
-import {Dispatch} from "@reduxjs/toolkit"
+import { SyntheticEvent, useEffect, useState } from "react";
+import { Dispatch } from "@reduxjs/toolkit";
 import { Container, Stack, Box } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -8,12 +8,17 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PausedOrders from "./PausedOrders";
 import ProcessOrders from "./ProcessOrders";
 import FinishedOrders from "./FinishedOrders";
-import "../../css/orders.css";
+
 import { setFinishedOrders, setPausedOrders, setProcessOrders } from "./slice";
-import { Order } from "../../lib/types/order";
+import { Order, OrderInquiry } from "../../lib/types/order";
 import { useDispatch } from "react-redux";
-
-
+import { OrderStatus } from "../../lib/enums/order.enum";
+import OrderService from "../../services/OrderService";
+import { useGlobals } from "../../hooks/useGlobals";
+import "../../css/orders.css";
+import { useHistory } from "react-router-dom";
+import { serverApi } from "../../lib/config";
+import { memberType } from "../../lib/enums/member.enum";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setPausedOrders: (data: Order[]) => dispatch(setPausedOrders(data)),
@@ -22,12 +27,37 @@ const actionDispatch = (dispatch: Dispatch) => ({
 });
 
 export default function OrdersPage() {
-  const {setPausedOrders, setProcessOrders, setFinishedOrders} = actionDispatch(useDispatch())
-  const [value, setValue ] = useState("1")
+  const { setPausedOrders, setProcessOrders, setFinishedOrders } =
+    actionDispatch(useDispatch());
+    const { orderBuilder, authMember } = useGlobals();
+    const history = useHistory()
+  const [value, setValue] = useState("1");
+  const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
+    page: 1,
+    limit: 5,
+    orderStatus: OrderStatus.PAUSE,
+  });
+  useEffect(() => {
+    const order = new OrderService();
+    order
+      .getMyOrders({ ...orderInquiry, orderStatus: OrderStatus.PAUSE })
+      .then((data) => setPausedOrders(data))
+      .catch((err) => console.log(err));
+    order
+      .getMyOrders({ ...orderInquiry, orderStatus: OrderStatus.PROCESS })
+      .then((data) => setProcessOrders(data))
+      .catch((err) => console.log(err));
+    order
+      .getMyOrders({...orderInquiry, orderStatus: OrderStatus.FINISH})
+      .then((data) => setFinishedOrders(data))
+      .catch((err) => console.log(err))
+  }, [orderInquiry, orderBuilder]);
+
+  /** HANDLERS **/
   const handleChange = (e: SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-
+  if (!authMember) history.push("/");
   return (
     <div className={"order-page"}>
       <Container className="order-container">
@@ -48,8 +78,8 @@ export default function OrdersPage() {
               </Box>
             </Box>
             <Stack className={"order-main-content"}>
-              <PausedOrders />
-              <ProcessOrders />
+              <PausedOrders  setValue={setValue} />
+              <ProcessOrders  setValue={setValue}/>
               <FinishedOrders />
             </Stack>
           </TabContext>
@@ -60,25 +90,37 @@ export default function OrdersPage() {
             <Box className={"member-box"}>
               <div className={"order-user-img"}>
                 <img
-                  src={"/icons/default-user.svg"}
+                  src={ authMember?.memberImage
+                    ? `${serverApi}/${authMember.memberImage}`
+                    : "/icons/default-user.svg"}
                   className={"order-user-avatar"}
                 />
                 <div className={"order-user-icon-box"}>
                   <img
-                    src={"/icons/user-badge.svg"}
+                    src={
+                      authMember?.memberType === memberType.RESTAURANT
+                        ? "/icons/restaurant.svg"
+                        : "/icons/user-badge.svg"}
                     className={"order-user-prof-img"}
                   />
                 </div>
               </div>
-              <span className={"order-user-name"}>Martin</span>
-              <span className={"order-user-prof"}>User</span>
+              <span className={"order-user-name"}>
+                {" "}
+                {authMember?.memberNick}</span>
+              <span className={"order-user-prof"}>
+                {" "}
+                {authMember?.memberType}</span>
             </Box>
             <Box className={"liner"}></Box>
             <Box className={"order-user-address"}>
               <div style={{ display: "flex" }}>
                 <LocationOnIcon />
               </div>
-              <div className={"spec-address-txt"}>Do not exist</div>
+              <div className={"spec-address-txt"}>
+                  {authMember?.memberAddress
+                  ? authMember.memberAddress
+                  : "Do not exist"}</div>
             </Box>
           </Box>
           <Box className={"order-info-box"} sx={{ mt: "15px" }}>
